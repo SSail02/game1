@@ -103,11 +103,7 @@ public class GameController {
         currentInput += digit;
         currentDigit = currentInput.length();
         gamePanel.setDisplayText(currentInput);
-        if (currentInput.length() == org_numbers.get(currentQuestion).length()) {
-            checkCurrentAnswer();
-        } else {
-            shuffleDigits();
-        }
+        gamePanel.setDisplayText(currentInput);
     }
 
     public void handleSubmit() {
