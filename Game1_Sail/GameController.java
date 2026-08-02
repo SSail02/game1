@@ -109,41 +109,41 @@ public class GameController {
     }
 
     public void handleSubmit() {
-        if (currentQuestion >= org_numbers.size()) {
-            return;
-        }
-        if (currentInput.length() == 0) {
-            popupManager.showValidationError("Please enter a number before submitting.");
-            return;
-        }
-        if (currentInput.length() < org_numbers.get(currentQuestion).length()) {
-            popupManager.showValidationError("Please enter all digits for this number.");
-            return;
-        }
-        checkCurrentAnswer();
+    if (currentQuestion >= org_numbers.size()) {
+        return;
+    }
+    if (currentInput.length() == 0) {
+        popupManager.showValidationError("Please enter a number.");
+        return;
+    }
+    if (currentInput.length() != org_numbers.get(currentQuestion).length()) {
+        popupManager.showValidationError("Incomplete number.");
+        return;
+    }
+    checkCurrentAnswer();
     }
 
-    private void checkCurrentAnswer() {
-        String expectedNumber = org_numbers.get(currentQuestion);
-        if (expectedNumber.equals(currentInput)) {
-            scoreManager.addCorrect();
-            correctAnswers = scoreManager.getCorrectAnswers();
-            gamePanel.addCorrectAnswer(expectedNumber);
-        } else {
-            scoreManager.addWrong();
-            wrongAnswers = scoreManager.getWrongAnswers();
-            popupManager.showWrongGuess();
-        }
-        currentQuestion++;
-        currentDigit = 0;
-        currentInput = "";
-        gamePanel.setDisplayText("");
-        if (currentQuestion == org_numbers.size()) {
-            finishGame();
-        } else {
-            shuffleDigits();
-        }
+   private void checkCurrentAnswer() {
+    String expectedNumber = org_numbers.get(currentQuestion);
+    if (expectedNumber.equals(currentInput)) {
+        scoreManager.addCorrect();
+        correctAnswers = scoreManager.getCorrectAnswers();
+        gamePanel.addAnswer(currentInput, true);
+    } else {
+        scoreManager.addWrong();
+        wrongAnswers = scoreManager.getWrongAnswers();
+        gamePanel.addAnswer(currentInput, false);
     }
+    currentQuestion++;
+    currentDigit = 0;
+    currentInput = "";
+    gamePanel.setDisplayText("");
+    if (currentQuestion == org_numbers.size()) {
+        finishGame();
+    } else {
+        shuffleDigits();
+    }
+}
 
     private void shuffleDigits() {
         shuffle = shuffleManager.shuffleSequence();
