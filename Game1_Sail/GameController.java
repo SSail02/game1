@@ -96,14 +96,16 @@ public class GameController {
         displayThread.start();
     }
 
-    public void handleDigit(String digit) {
-        if (currentQuestion >= org_numbers.size()) {
-            return;
-        }
-        currentInput += digit;
-        currentDigit = currentInput.length();
-        gamePanel.setDisplayText(currentInput);
-        gamePanel.setDisplayText(currentInput);
+   public void handleDigit(String digit) {
+    if (currentQuestion >= org_numbers.size()) {
+        return;
+    }
+    if (currentInput.length() >= org_numbers.get(currentQuestion).length()) {
+        return;
+    }
+    currentInput += digit;
+    currentDigit = currentInput.length();
+    gamePanel.setDisplayText(currentInput);
     }
 
     public void handleSubmit() {
