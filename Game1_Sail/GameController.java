@@ -123,7 +123,7 @@ public class GameController {
     checkCurrentAnswer();
     }
 
-  private void checkCurrentAnswer() {
+private void checkCurrentAnswer() {
 
     String expectedNumber = org_numbers.get(currentQuestion);
 
@@ -131,13 +131,16 @@ public class GameController {
 
         scoreManager.addCorrect();
         correctAnswers = scoreManager.getCorrectAnswers();
-        gamePanel.addAnswer(currentInput, true);
+
+        gamePanel.addAnswer(expectedNumber, true);
 
     } else {
 
         scoreManager.addWrong();
         wrongAnswers = scoreManager.getWrongAnswers();
-        gamePanel.addAnswer(currentInput, false);
+
+        gamePanel.addAnswer(expectedNumber, false);
+
         popupManager.showWrongGuess(currentInput);
 
     }
