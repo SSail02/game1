@@ -123,25 +123,39 @@ public class GameController {
     checkCurrentAnswer();
     }
 
-   private void checkCurrentAnswer() {
+  private void checkCurrentAnswer() {
+
     String expectedNumber = org_numbers.get(currentQuestion);
+
     if (expectedNumber.equals(currentInput)) {
+
         scoreManager.addCorrect();
         correctAnswers = scoreManager.getCorrectAnswers();
         gamePanel.addAnswer(currentInput, true);
+
     } else {
+
         scoreManager.addWrong();
         wrongAnswers = scoreManager.getWrongAnswers();
         gamePanel.addAnswer(currentInput, false);
+        popupManager.showWrongGuess(currentInput);
+
     }
+
     currentQuestion++;
     currentDigit = 0;
     currentInput = "";
+
     gamePanel.setDisplayText("");
+
     if (currentQuestion == org_numbers.size()) {
+
         finishGame();
+
     } else {
+
         shuffleDigits();
+
     }
 }
 
