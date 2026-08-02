@@ -143,7 +143,13 @@ public class GamePanel extends JPanel {
     public void setLevelText(String level) { levelLabel.setText("YOU ARE PLAYING FOR : " + level); }
     public void setDisplayText(String text) { displayScreen.setText(text); }
     public void clearAnswers() { answerScreen.setText(""); }
-    public void addCorrectAnswer(String number) { answerScreen.append("✔ " + number + "\n"); }
+    public void addAnswer(String number, boolean correct) {
+    if (correct) {
+        answerScreen.append("✔ " + number + "\n");
+    } else {
+        answerScreen.append("✘ " + number + "\n");
+           }
+    }
     public ButtonManager getButtonManager() { return buttonManager; }
 
     public void setGameControlsEnabled(boolean enabled) {
