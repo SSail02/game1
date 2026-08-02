@@ -17,8 +17,15 @@ public class PopupManager {
         JOptionPane.showMessageDialog(parent, message, "Validation", JOptionPane.WARNING_MESSAGE);
     }
 
-    public void showWrongGuess() {
-        JOptionPane.showMessageDialog(parent, "Wrong number! Try the next one.", "Wrong Guess", JOptionPane.ERROR_MESSAGE);
+    public void showWrongGuess(String enteredNumber) {
+
+    JOptionPane.showMessageDialog(
+            parent,
+            "Wrong Guess!\n\nYou entered : " + enteredNumber,
+            "Wrong Guess",
+            JOptionPane.ERROR_MESSAGE
+        );
+
     }
 
     public void showResult(int correctAnswers, int totalAnswers) {
