@@ -145,9 +145,9 @@ public class GamePanel extends JPanel {
     public void clearAnswers() { answerScreen.setText(""); }
     public void addAnswer(String number, boolean correct) {
     if (correct) {
-        answerScreen.append("✔ " + number + "\n");
+        answerScreen.append( number + "✔ " + "\n");
     } else {
-        answerScreen.append("✘ " + number + "\n");
+        answerScreen.append( number + "✘ " + "\n");
            }
     }
     public ButtonManager getButtonManager() { return buttonManager; }
